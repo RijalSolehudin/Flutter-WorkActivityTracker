@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project_fe_mobile/core/core.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../auth/widgets/auth_toggle.dart';
 
@@ -14,11 +15,44 @@ class _MonitorWidgetState extends State<MonitorWidget> {
   int _currentPage = 0;
   bool isSelected = true;
   final PageController _pageController = PageController();
+  double circularPercent = 0.0;
+  double linearPercent1 = 0.0;
+  double linearPercent2 = 0.0;
+  double linearPercent3 = 0.0;
+
+  @override
+  void initState() {
+    _restartAnimation();
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant MonitorWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _restartAnimation();
+  }
 
   @override
   void dispose() {
     _pageController.dispose();
+
     super.dispose();
+  }
+
+  void _restartAnimation() {
+    setState(() {
+      circularPercent = 0;
+      linearPercent1 = 0;
+    });
+    Future.delayed(
+      const Duration(milliseconds: 100),
+      () {
+        setState(() {
+          circularPercent = 0.4;
+          linearPercent1 = 0.7;
+        });
+      },
+    );
   }
 
   @override
@@ -35,6 +69,7 @@ class _MonitorWidgetState extends State<MonitorWidget> {
               setState(() {
                 _currentPage = page;
               });
+              _restartAnimation();
             },
             itemBuilder: (context, index) {
               return Column(
@@ -43,43 +78,81 @@ class _MonitorWidgetState extends State<MonitorWidget> {
                   Container(
                     height: context.deviceHeight * 0.2,
                     margin: const EdgeInsets.only(top: 20),
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Flexible(
+                        const Flexible(
                             flex: 1,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("566"),
+                                Text(
+                                  "566",
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.w600),
+                                ),
                                 Text(
                                   "Remaining",
-                                  style: TextStyle(color: AppColors.gray),
+                                  style: TextStyle(
+                                      fontSize: 14, color: AppColors.gray),
                                 ),
                               ],
                             )),
                         Flexible(
-                            flex: 3,
+                            flex: 2,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("656"),
-                                Text(
-                                  "Working",
-                                  style: TextStyle(color: AppColors.gray),
+                                CircularPercentIndicator(
+                                  radius: 80,
+                                  lineWidth: 6,
+                                  percent: circularPercent,
+                                  progressColor: Colors.blue,
+                                  startAngle: 240,
+                                  animation: true,
+                                  animationDuration: 2000,
+                                  arcBackgroundColor: AppColors.gray,
+                                  arcType: ArcType.FULL,
+                                  center: const SizedBox(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "465",
+                                          style: TextStyle(
+                                              fontSize: 32,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        Text(
+                                          "Working",
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              color: AppColors.gray),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ],
                             )),
-                        Flexible(
+                        const Flexible(
                             flex: 1,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("1220"),
+                                Text(
+                                  "1220",
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.w600),
+                                ),
                                 Text(
                                   "target",
-                                  style: TextStyle(color: AppColors.gray),
+                                  style: TextStyle(
+                                      fontSize: 14, color: AppColors.gray),
                                 ),
                               ],
                             )),
@@ -88,12 +161,84 @@ class _MonitorWidgetState extends State<MonitorWidget> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 10),
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text("Failed"),
-                        Text("Progress"),
-                        Text("Success"),
+                        SizedBox(
+                          child: Column(
+                            children: [
+                              const Text("Failed"),
+                              Container(
+                                decoration: const BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 6,
+                                      color: Color.fromARGB(59, 0, 0, 0),
+                                      spreadRadius: 0.0,
+                                      offset: Offset(5, 3))
+                                ]),
+                                child: LinearPercentIndicator(
+                                  width: 100,
+                                  lineHeight: 6,
+                                  percent: linearPercent1,
+                                  progressColor: AppColors.red,
+                                  animationDuration: 2000,
+                                  animation: true,
+                                ),
+                              ),
+                              const Text("42 / 77 %")
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          child: Column(
+                            children: [
+                              const Text("Progress"),
+                              Container(
+                                decoration: const BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 6,
+                                      color: Color.fromARGB(59, 0, 0, 0),
+                                      spreadRadius: 0,
+                                      offset: Offset(5, 3))
+                                ]),
+                                child: LinearPercentIndicator(
+                                  width: 100,
+                                  lineHeight: 5,
+                                  percent: linearPercent1,
+                                  progressColor: AppColors.yellow,
+                                  animationDuration: 2000,
+                                  animation: true,
+                                ),
+                              ),
+                              const Text("20 / 40 %")
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          child: Column(
+                            children: [
+                              const Text("Success"),
+                              Container(
+                                decoration: const BoxDecoration(boxShadow: [
+                                  BoxShadow(
+                                      blurRadius: 5,
+                                      color: Color.fromARGB(59, 0, 0, 0),
+                                      spreadRadius: 0.0,
+                                      offset: Offset(5, 3))
+                                ]),
+                                child: LinearPercentIndicator(
+                                  width: 100,
+                                  lineHeight: 5,
+                                  percent: linearPercent1,
+                                  progressColor: AppColors.green,
+                                  animationDuration: 2000,
+                                  animation: true,
+                                ),
+                              ),
+                              const Text("85 / 136 %")
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),

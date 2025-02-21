@@ -20,7 +20,7 @@ class AuthToggle extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     final Color primaryColor = isDarkMode ? Colors.white : AppColors.black;
-    final Color secondaryColor = isDarkMode ? AppColors.gray : Colors.white;
+    final Color secondaryColor = isDarkMode ? AppColors.black : Colors.white;
 
     return Row(
       children: [

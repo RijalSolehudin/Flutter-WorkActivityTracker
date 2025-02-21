@@ -7,7 +7,11 @@ class AppColors {
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffffffff);
   static const Color stroke = Color(0xffE2E8F0);
-  static const Color red = Color.fromRGBO(255, 0, 30, 1);
+  static const Color red = Color(0xfffB8564);
+  static const Color green = Color(0xff4AB178);
+  static const Color yellow = Color(0xffFBC447);
+  static const Color background = Color.fromARGB(255, 252, 245, 245);
+  static const Color background1 = Color.fromARGB(134, 93, 92, 93);
 
   static ThemeData darkTheme =
       ThemeData(useMaterial3: true, colorScheme: darkColorScheme);
@@ -57,7 +61,7 @@ class AppColors {
     brightness: Brightness.dark,
     primary: Color.fromARGB(255, 255, 255, 255),
     surfaceTint: Color(0xffffb5a0),
-    onPrimary: Color(0xff561f0f),
+    onPrimary: Color.fromARGB(255, 0, 0, 0),
     primaryContainer: Color(0xff723523),
     onPrimaryContainer: Color(0xffffdbd1),
     secondary: Color(0xffe7bdb2),

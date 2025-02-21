@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mini_project_fe_mobile/core/constants/colors.dart';
-import 'package:mini_project_fe_mobile/presentation/auth/pages/login_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mini_project_fe_mobile/presentation/bloc/theme_bloc/theme_bloc.dart';
+import 'package:mini_project_fe_mobile/presentation/auth/pages/login_page.dart';
+import 'package:mini_project_fe_mobile/presentation/home/bloc/theme_bloc/theme_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -23,9 +22,10 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                   colorScheme: AppColors.lightColorScheme, fontFamily: 'Inter'),
               themeMode: state,
-              darkTheme: AppColors.darkTheme,
+              darkTheme: ThemeData(
+                  colorScheme: AppColors.darkColorScheme, fontFamily: 'Inter'),
               debugShowCheckedModeBanner: false,
-              home: LoginPage());
+              home: const LoginPage());
         },
       ),
     );
