@@ -20,7 +20,8 @@ class AuthToggle extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     final Color primaryColor = isDarkMode ? Colors.white : AppColors.black;
-    final Color secondaryColor = isDarkMode ? AppColors.black : Colors.white;
+    final Color secondaryColor =
+        isDarkMode ? AppColors.background2 : Colors.white;
 
     return Row(
       children: [
@@ -43,7 +44,7 @@ class AuthToggle extends StatelessWidget {
         const SizedBox(width: 10),
         TextButton(
           onPressed: () {
-            if (isSelected) onToggle(); // Jika sedang di sign-up, ubah ke login
+            if (isSelected) onToggle();
           },
           style: OutlinedButton.styleFrom(
             backgroundColor: isSelected ? secondaryColor : primaryColor,

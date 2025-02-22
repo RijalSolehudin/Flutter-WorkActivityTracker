@@ -22,13 +22,23 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Work Focus",
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
+              const SpaceHeight(80),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Work Focus",
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
+                  ),
+                  SwitchTema(),
+                ],
               ),
               const Text(
                 "Track your activity work",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.gray),
               ),
               const SpaceHeight(50),
               AuthToggle(
@@ -42,8 +52,37 @@ class _LoginPageState extends State<LoginPage> {
                 },
               ),
               const SpaceHeight(10),
-              isLogin ? const LoginForm() : const SignUpForm(),
-              SwitchTema(),
+              isLogin
+                  ? Column(
+                      children: [
+                        const LoginForm(),
+                        SizedBox(
+                          width: context.deviceWidth,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Dont have an account?",
+                                style: TextStyle(color: AppColors.gray),
+                              ),
+                              const SpaceWidth(8),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    isLogin = !isLogin;
+                                  });
+                                },
+                                child: const Text(
+                                  "Sign Up",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                  : const SignUpForm(),
             ],
           ),
         ),

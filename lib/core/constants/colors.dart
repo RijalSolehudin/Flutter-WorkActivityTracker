@@ -4,14 +4,17 @@ class AppColors {
   static const Color primary = Color.fromARGB(255, 52, 26, 103);
   static const Color blue = Color(0xff3C9AFB);
   static const Color gray = Color.fromARGB(255, 163, 163, 163);
+  static const Color grayMuda = Color.fromARGB(255, 233, 216, 216);
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xffffffff);
   static const Color stroke = Color(0xffE2E8F0);
   static const Color red = Color(0xfffB8564);
   static const Color green = Color(0xff4AB178);
   static const Color yellow = Color(0xffFBC447);
+  static const Color appbar = Color(0xffD9E3FB);
+  static const Color background2 = Color.fromARGB(255, 57, 57, 57);
   static const Color background = Color.fromARGB(255, 252, 245, 245);
-  static const Color background1 = Color.fromARGB(134, 93, 92, 93);
+  static const Color rectangle = Color.fromARGB(255, 108, 108, 108);
 
   static ThemeData darkTheme =
       ThemeData(useMaterial3: true, colorScheme: darkColorScheme);
@@ -20,41 +23,45 @@ class AppColors {
 
   static ColorScheme lightColorScheme = const ColorScheme(
     brightness: Brightness.light,
-    primary: Colors.white,
-    onPrimary: Color.fromARGB(255, 255, 255, 255),
+    primary: Color.fromARGB(255, 117, 117, 117),
+    onPrimary: Colors.white,
+    primaryContainer: Color(0xFFD1C4E9),
     onPrimaryContainer: Color.fromARGB(255, 255, 255, 255),
-    secondary: Color.fromARGB(255, 0, 0, 0),
-    onSecondary: Color.fromARGB(255, 255, 255, 255),
-    onSecondaryContainer: Color.fromARGB(255, 255, 255, 255),
-    onTertiary: Color.fromARGB(255, 255, 255, 255),
-    onTertiaryContainer: Color.fromARGB(255, 255, 255, 255),
-    error: Color(0xff600004),
+    secondary: Color(0xFF03DAC6),
+    onSecondary: Colors.black,
+    secondaryContainer: Color(0xFFB2DFDB),
+    onSecondaryContainer: Color(0xFF004D40),
+    tertiary: Color(0xFFFFC107),
+    onTertiary: Colors.black,
+    tertiaryContainer: Color(0xFFFFE082),
+    onTertiaryContainer: Color(0xFFFF6F00),
+    error: Color(0xFFB00020),
     onError: Colors.white,
-    errorContainer: Color(0xff98000a),
-    onErrorContainer: Colors.white,
-    surface: Color.fromARGB(255, 255, 255, 255),
-    onSurface: Color(0xff000000),
-    onSurfaceVariant: Color(0xff000000),
-    outline: Color.fromARGB(255, 0, 0, 0),
-    outlineVariant: Color.fromARGB(255, 0, 0, 0),
-    shadow: Color(0xff000000),
-    scrim: Color(0xff000000),
-    inverseSurface: Color.fromARGB(255, 0, 0, 0),
-    inversePrimary: Color.fromARGB(255, 255, 255, 255),
-    primaryFixed: Color.fromARGB(255, 255, 255, 255),
-    onPrimaryFixed: Color.fromARGB(255, 255, 255, 255),
-    onPrimaryFixedVariant: Color.fromARGB(255, 255, 255, 255),
-    onSecondaryFixed: Colors.white,
-    onSecondaryFixedVariant: Colors.white,
-    onTertiaryFixed: Colors.white,
-    onTertiaryFixedVariant: Colors.white,
-    surfaceDim: Colors.white,
+    errorContainer: Color(0xFFFFCDD2),
+    onErrorContainer: Color(0xFFB71C1C),
+    surface: Colors.white,
+    onSurface: Colors.black,
+    onSurfaceVariant: Colors.black,
+    outline: Color(0xFF757575),
+    outlineVariant: Color(0xFFBDBDBD),
+    shadow: Colors.black38,
+    scrim: Colors.black54,
+    inverseSurface: Color(0xFF121212),
+    inversePrimary: Color.fromARGB(255, 91, 91, 91),
+    primaryFixed: Color(0xFFD1C4E9),
+    onPrimaryFixed: Color.fromARGB(255, 121, 121, 121),
+    onPrimaryFixedVariant: Color.fromARGB(255, 99, 99, 99),
+    onSecondaryFixed: Color(0xFF004D40),
+    onSecondaryFixedVariant: Color(0xFF03DAC6),
+    onTertiaryFixed: Color(0xFFFF6F00),
+    onTertiaryFixedVariant: Color(0xFFFFC107),
+    surfaceDim: Color(0xFFF5F5F5),
     surfaceBright: Colors.white,
     surfaceContainerLowest: Colors.white,
-    surfaceContainerLow: Colors.white,
-    surfaceContainer: Colors.white,
-    surfaceContainerHigh: Colors.white,
-    surfaceContainerHighest: Colors.white,
+    surfaceContainerLow: Color(0xFFFAFAFA),
+    surfaceContainer: Color(0xFFF0F0F0),
+    surfaceContainerHigh: Color(0xFFE0E0E0),
+    surfaceContainerHighest: Color(0xFFD6D6D6),
   );
 
   static ColorScheme darkColorScheme = const ColorScheme(
@@ -63,7 +70,7 @@ class AppColors {
     surfaceTint: Color(0xffffb5a0),
     onPrimary: Color.fromARGB(255, 0, 0, 0),
     primaryContainer: Color(0xff723523),
-    onPrimaryContainer: Color(0xffffdbd1),
+    onPrimaryContainer: Color.fromARGB(255, 255, 255, 255),
     secondary: Color(0xffe7bdb2),
     onSecondary: Color(0xff442a22),
     secondaryContainer: Color(0xff5d4037),
@@ -76,9 +83,9 @@ class AppColors {
     onError: Color(0xff690005),
     errorContainer: Color(0xff93000a),
     onErrorContainer: Color(0xffffdad6),
-    surface: Color(0xff1a110f),
+    surface: Color.fromARGB(255, 0, 0, 0),
     onSurface: Color.fromARGB(255, 255, 255, 255),
-    onSurfaceVariant: Color(0xffd8c2bc),
+    onSurfaceVariant: Color.fromARGB(255, 255, 255, 255),
     outline: Color(0xffa08c87),
     outlineVariant: Color(0xff53433f),
     shadow: Color(0xff000000),

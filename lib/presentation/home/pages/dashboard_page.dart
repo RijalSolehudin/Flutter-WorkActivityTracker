@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mini_project_fe_mobile/data/model/chart_data_dummy.dart';
+import 'package:mini_project_fe_mobile/presentation/home/pages/insight_page.dart';
+import 'package:mini_project_fe_mobile/presentation/home/widgets/insight_card.dart';
+import 'package:mini_project_fe_mobile/presentation/home/widgets/insight_chart.dart';
 import 'package:mini_project_fe_mobile/presentation/home/widgets/monitor_widget.dart';
 
 import '../../../core/core.dart';
@@ -39,7 +43,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         style: const TextStyle(
                             fontSize: 18, color: AppColors.gray),
                       ),
-                      SwitchTema(),
+                      const SwitchTema(),
                     ],
                   ),
                   const Text(
@@ -55,7 +59,7 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             const MonitorWidget(),
             Container(
-              color: isDarkMode ? AppColors.background1 : AppColors.background,
+              color: isDarkMode ? AppColors.background2 : AppColors.background,
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
@@ -74,7 +78,9 @@ class _DashboardPageState extends State<DashboardPage> {
                             Icons.arrow_forward_ios_sharp,
                             size: 18,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            context.push(const InsightPage());
+                          },
                         ),
                       ],
                     ),
@@ -85,53 +91,25 @@ class _DashboardPageState extends State<DashboardPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: context.deviceWidth * 0.43,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Expenditure",
-                                style: TextStyle(
-                                    fontSize: 16, color: AppColors.black),
-                              ),
-                              Text(
-                                "19 aug - now",
-                                style: TextStyle(
-                                    fontSize: 14, color: AppColors.gray),
-                              ),
-                            ],
+                        const InsightCard(
+                          title: "Expenditure",
+                          date: "15 Jan - now",
+                          task: "287",
+                          chart: InsightChart(
+                            data: ChartData.expenditureData,
+                            color: AppColors.red,
                           ),
                         ),
-
-                        //insight caard
-                        Container(
-                          width: context.deviceWidth * 0.43,
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Habits Trend",
-                                style: TextStyle(
-                                    fontSize: 16, color: AppColors.black),
-                              ),
-                              Text(
-                                "19 aug - now",
-                                style: TextStyle(
-                                    fontSize: 14, color: AppColors.gray),
-                              ),
-                              Divider(
-                                color: AppColors.gray,
-                              )
-                            ],
+                        GestureDetector(
+                          onTap: () => context.push(const InsightPage()),
+                          child: const InsightCard(
+                            title: "Habits Trend",
+                            date: "15 Jan - now",
+                            task: "786",
+                            chart: InsightChart(
+                              data: ChartData.habitTrendData,
+                              color: AppColors.blue,
+                            ),
                           ),
                         ),
                       ],

@@ -5,9 +5,9 @@ class AnalyticPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: Container(),
-    );
+    return const Scaffold(
+        body: Center(
+      child: Text("Konten belum tersedia"),
+    ));
   }
 }

@@ -57,6 +57,8 @@ class _MonitorWidgetState extends State<MonitorWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final Color primaryColor = isDarkMode ? AppColors.white : AppColors.black;
     return Column(
       children: [
         SizedBox(
@@ -107,7 +109,7 @@ class _MonitorWidgetState extends State<MonitorWidget> {
                               children: [
                                 CircularPercentIndicator(
                                   radius: 80,
-                                  lineWidth: 6,
+                                  lineWidth: 7,
                                   percent: circularPercent,
                                   progressColor: Colors.blue,
                                   startAngle: 240,
@@ -172,7 +174,7 @@ class _MonitorWidgetState extends State<MonitorWidget> {
                                 decoration: const BoxDecoration(boxShadow: [
                                   BoxShadow(
                                       blurRadius: 6,
-                                      color: Color.fromARGB(59, 0, 0, 0),
+                                      color: Color.fromARGB(26, 0, 0, 0),
                                       spreadRadius: 0.0,
                                       offset: Offset(5, 3))
                                 ]),
@@ -197,13 +199,13 @@ class _MonitorWidgetState extends State<MonitorWidget> {
                                 decoration: const BoxDecoration(boxShadow: [
                                   BoxShadow(
                                       blurRadius: 6,
-                                      color: Color.fromARGB(59, 0, 0, 0),
+                                      color: Color.fromARGB(26, 0, 0, 0),
                                       spreadRadius: 0,
                                       offset: Offset(5, 3))
                                 ]),
                                 child: LinearPercentIndicator(
                                   width: 100,
-                                  lineHeight: 5,
+                                  lineHeight: 6,
                                   percent: linearPercent1,
                                   progressColor: AppColors.yellow,
                                   animationDuration: 2000,
@@ -221,8 +223,8 @@ class _MonitorWidgetState extends State<MonitorWidget> {
                               Container(
                                 decoration: const BoxDecoration(boxShadow: [
                                   BoxShadow(
-                                      blurRadius: 5,
-                                      color: Color.fromARGB(59, 0, 0, 0),
+                                      blurRadius: 6,
+                                      color: Color.fromARGB(26, 0, 0, 0),
                                       spreadRadius: 0.0,
                                       offset: Offset(5, 3))
                                 ]),
@@ -277,7 +279,7 @@ class _MonitorWidgetState extends State<MonitorWidget> {
                 height: _currentPage == index ? 10.0 : 6.0,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _currentPage == index ? AppColors.black : Colors.grey,
+                  color: _currentPage == index ? primaryColor : AppColors.gray,
                 ),
               ),
             ),
